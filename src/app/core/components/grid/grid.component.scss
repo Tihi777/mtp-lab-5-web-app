@@ -11,9 +11,3 @@ $cell-background-color: #ef9a2c;
   grid-template-rows: repeat(4, 1fr);
   background: $grid-background-color;
 }
-
-.active {
-  ::ng-deep button {
-    background: $cell-background-color;
-  }
-}
