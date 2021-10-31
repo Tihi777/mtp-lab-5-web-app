@@ -1,0 +1,10 @@
+<button
+  #buttonElement
+  [class.active]="isActive"
+  [attr.data-id]="id"
+  (click)="handleCellClick($event)"
+  (mouseenter)="handleMouseEnter()"
+  tabindex="-1"
+>
+  {{ id }}
+</button>

@@ -1,0 +1,8 @@
+<app-grid-cell
+  *ngFor="let cell of gridCells"
+  [style.grid-area]="cell.position"
+  [id]="cell.id"
+  [isActive]="cell.id === activeCell.id"
+  (cellClick)="handleCellClick($event)"
+  (cellHover)="handleHover($event)"
+></app-grid-cell>
