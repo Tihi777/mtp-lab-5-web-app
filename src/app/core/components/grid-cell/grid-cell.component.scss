@@ -8,6 +8,8 @@ button {
   border: 2px solid $cell-border-color;
   border-radius: 4px;
   background: transparent;
+  font-size: 24px;
+  color: aliceblue;
 
   &.active {
     background: $cell-background-color;

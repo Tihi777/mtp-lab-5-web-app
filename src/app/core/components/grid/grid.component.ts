@@ -8,45 +8,40 @@ import { KeyCode } from '../../constants/key-code';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent {
-  gridCells = GRID_CELLS;
-  activeCell: GridCell;
-
-  constructor() {
-    this.activeCell = GRID_CELLS[0];
-  }
+  gridCells: GridCell[] = GRID_CELLS;
+  activeCell: GridCell = GRID_CELLS[0];
 
   @HostListener('document:keydown', ['$event.keyCode'])
   handleKeyDown(keyCode: number) {
     let nextActiveCellId: Id | null = null;
+    const { destination } = this.activeCell;
 
     if (keyCode === KeyCode.ArrowLeft) {
-      nextActiveCellId = this.activeCell.destination.left;
+      nextActiveCellId = destination.left;
     }
 
     if (keyCode === KeyCode.ArrowRight) {
-      nextActiveCellId = this.activeCell.destination.right;
+      nextActiveCellId = destination.right;
     }
 
     if (keyCode === KeyCode.ArrowUp) {
-      nextActiveCellId = this.activeCell.destination.up;
+      nextActiveCellId = destination.up;
     }
 
     if (keyCode === KeyCode.ArrowDown) {
-      nextActiveCellId = this.activeCell.destination.down;
+      nextActiveCellId = destination.down;
     }
 
     if (nextActiveCellId) {
-      this.activeCell = this.gridCells.find(
-        (cell) => cell.id === nextActiveCellId
-      )!;
+      this._setActiveCell(nextActiveCellId);
     }
   }
 
-  handleCellClick(id: Id) {
-    this.activeCell = this.gridCells.find((cell) => cell.id === id)!;
+  handleHover(id: Id) {
+    this._setActiveCell(id);
   }
 
-  handleHover(id: Id) {
+  private _setActiveCell(id: Id) {
     this.activeCell = this.gridCells.find((cell) => cell.id === id)!;
   }
 }

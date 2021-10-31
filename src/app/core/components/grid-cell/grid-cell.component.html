@@ -1,10 +1,11 @@
 <button
   #buttonElement
+  tabindex="-1"
   [class.active]="isActive"
   [attr.data-id]="id"
+  [@fade]="isActive ? 'in' : 'out'"
   (click)="handleCellClick($event)"
   (mouseenter)="handleMouseEnter()"
-  tabindex="-1"
 >
   {{ id }}
 </button>
